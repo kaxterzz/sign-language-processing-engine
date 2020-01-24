@@ -14,7 +14,7 @@ from keras.preprocessing import image
 
 try:
     # train = pd.read_csv('sources/sign-language-mnist/sign-mnist-train.csv')
-    # test = pd.read_csv('sources/sign-language-mnist/sign-mnist-test.csv')
+    test = pd.read_csv('sources/sign-language-mnist/sign-mnist-test.csv')
 
     # print(train.head())
 
@@ -33,14 +33,14 @@ try:
 
     # train.drop('label', axis = 1, inplace = True)
 
-    # images = train.values
-    # images = np.array([np.reshape(i, (28,28)) for i in images])
-    # images = np.array([i.flatten() for i in images])
+    images = train.values
+    images = np.array([np.reshape(i, (28,28)) for i in images])
+    images = np.array([i.flatten() for i in images])
 
     # label_binrizer = LabelBinarizer()
     # labels = label_binrizer.fit_transform(labels)
 
-    # x_train, x_test, y_train, y_test = train_test_split(images, labels, test_size = 0.3, random_state = 101)
+    x_train, x_test, y_train, y_test = train_test_split(images, labels, test_size = 0.3, random_state = 101)
 
     # batch_size = 128
     # num_classes = 24
@@ -97,7 +97,7 @@ try:
 
     model = load_model("testmodel.h5")
 
-    test_image = image.load_img('sources/images/a.gif',color_mode="grayscale",target_size=(28,28))
+    test_image = image.load_img('sources/images/a.png',color_mode="grayscale",target_size=(28,28))
 
     print(test_image.format)
     print(test_image.mode)
@@ -108,12 +108,13 @@ try:
     print(test_image.dtype)
     print(test_image.shape)
 
-    test_image = test_image.reshape(1,28,28,3)
+    test_image = test_image.reshape(28,28)
 
     test_labels = test['label']
     test.drop('label', axis = 1, inplace = True)
     
-    result = model.predict(test_image)
+    #result = model.predict(test_image)
+    result = model.predict(X_train.reshape(1,28,28,3))
 
     print(result)
 
