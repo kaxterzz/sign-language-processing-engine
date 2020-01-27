@@ -1,4 +1,4 @@
-from flask import Flask request, Blueprint, jsonify
+from flask import Flask, request, Blueprint, jsonify
 import socketio
 import string
 from base64 import b64decode
