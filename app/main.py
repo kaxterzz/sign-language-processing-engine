@@ -11,7 +11,7 @@ def hello():
     return "Hello World from Flask"
 
 @app.route("/test" , methods=['POST'])
-def hello():
+def test():
     try:
         if request.method == 'POST':
             val = request.form['test']
