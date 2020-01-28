@@ -46,7 +46,8 @@ def upload_files():
             f.close()
             # status = static_file.save(path + img_name)
             # full_file = path + static_file_name
-            return "true"
+            res = predict(random_file_name)
+            return res
         else:
             return "false"
 

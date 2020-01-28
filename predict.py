@@ -23,3 +23,4 @@ def predict(image):
     classname = y_pred[0]
     print("Class: ",classname)
     print(y_pred)
+    return prediction
