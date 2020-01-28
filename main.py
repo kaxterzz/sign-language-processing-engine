@@ -4,8 +4,10 @@ import string
 import random
 import os
 from base64 import b64decode
+from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/images'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -31,16 +33,25 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/upload-image', methods=['POST'])
 def upload_files():
     try:
         if request.method == 'POST':
+                # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
             file = request.files['photo']
-            filename = randomString() + '.png'
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #res = predict(str(random_file_name))
-            return "true"
-            #return jsonify(res)
+            # if user does not select file, browser also
+            # submit an empty part without filename
+            if file.filename == '':
+                flash('No selected file')
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         else:
             return "false"
 
