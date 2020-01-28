@@ -2,10 +2,13 @@ from flask import Flask, request, Blueprint, jsonify
 import socketio
 import string
 import random
+import os
 from base64 import b64decode
-from predict import predict
+
+UPLOAD_FOLDER = '/images'
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def hello():
@@ -32,29 +35,46 @@ def randomString(stringLength=10):
 def upload_files():
     try:
         if request.method == 'POST':
-            data = request.get_json(silent=True)
-            file_data = data.get('image')
-            
-            # img_name = secure_filename(static_file.filename)
-            # Decode the Base64 string, making sure that it contains only valid characters
-            data = b64decode(file_data)
-            #print(static_file_name)
-            random_file_name = 'images/'+randomString()+'.png'
-            
-            f = open(random_file_name, 'wb')
-            f.write(data)
-            f.close()
-            # status = static_file.save(path + img_name)
-            # full_file = path + static_file_name
-            res = predict(str(random_file_name))
-            #return "true"
-            return jsonify(res)
+            file = request.files['photo']
+            filename = randomString() + '.png'
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #res = predict(str(random_file_name))
+            return "true"
+            #return jsonify(res)
         else:
             return "false"
 
     except Exception as e:
         print(e)
         return e
+
+# @app.route('/upload-image', methods=['POST'])
+# def upload_files():
+#     try:
+#         if request.method == 'POST':
+#             data = request.get_json(silent=True)
+#             file_data = data.get('image')
+            
+#             img_name = secure_filename(static_file.filename)
+#             Decode the Base64 string, making sure that it contains only valid characters
+#             data = b64decode(file_data)
+#             print(static_file_name)
+#             random_file_name = 'images/'+randomString()+'.png'
+            
+#             f = open(random_file_name, 'wb')
+#             f.write(data)
+#             f.close()
+#             status = static_file.save(path + img_name)
+#             full_file = path + static_file_name
+#             res = predict(str(random_file_name))
+#             #return "true"
+#             return jsonify(res)
+#         else:
+#             return "false"
+
+#     except Exception as e:
+#         print(e)
+#         return e
 
 
 if __name__ == "__main__":
