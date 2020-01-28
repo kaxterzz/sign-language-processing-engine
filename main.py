@@ -1,6 +1,7 @@
 from flask import Flask, request, Blueprint, jsonify
 import socketio
 import string
+import random
 from base64 import b64decode
 from predict import predict
 
