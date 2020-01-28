@@ -23,4 +23,6 @@ def predict(image):
     classname = y_pred[0]
     print("Class: ",classname)
     print(y_pred)
-    return prediction
+    f = open('res.txt', 'w')
+        f.write("Class: ",classname)
+        f.close()
