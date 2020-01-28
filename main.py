@@ -33,8 +33,8 @@ def predict(image):
     model = load_model("testmodel3.h5")
 
     test_image = image.load_img(image,color_mode="grayscale",target_size=(28,28,1))
-    test_image = x_train[3]
-    plt.imshow(x_train[3].reshape(28,28))
+    # test_image = x_train[3]
+    # plt.imshow(x_train[3].reshape(28,28))
     #print(test_image.format)
     #print(test_image.mode)
     #print(test_image.size)
@@ -74,7 +74,7 @@ def upload_files():
             f.close()
             # status = static_file.save(path + img_name)
             # full_file = path + static_file_name
-            #predict(str(random_file_name))
+            predict(str(random_file_name))
             return "true"
             #return jsonify(res)
         else:
