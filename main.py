@@ -32,7 +32,7 @@ def randomString(stringLength=10):
 def upload_files():
     try:
         if request.method == 'POST':
-            file_data = request.form.get('image')
+            file_data = request.form['image']
             
             # img_name = secure_filename(static_file.filename)
             # Decode the Base64 string, making sure that it contains only valid characters
