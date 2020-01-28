@@ -4,6 +4,7 @@ import string
 import random
 import os
 from base64 import b64decode
+from predict import predict
 
 app = Flask(__name__)
 
@@ -35,8 +36,9 @@ def upload_files():
         if request.method == 'POST':
             f = request.files['file']  
             random_file_name = 'images/'+randomString()+'.png'
-            f.save(random_file_name)  
-            return "true"
+            f.save(random_file_name)
+            res = predict(str(random_file_name))  
+            return jsonify(res)
         else:
             return "false"
 
