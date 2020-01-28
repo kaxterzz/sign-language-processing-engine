@@ -34,7 +34,7 @@ def upload_files():
             # Decode the Base64 string, making sure that it contains only valid characters
             data = b64decode(file_data)
             #print(static_file_name)
-            random_file_name = 'images/'+'a1'+'.png'
+            random_file_name = 'images/'+randomString()+'.png'
             
             f = open(random_file_name, 'wb')
             f.write(data)
