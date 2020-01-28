@@ -10,7 +10,7 @@ def predict(img):
     #print(test_image.size)
 
     test_image = image.img_to_array(test_image)
-    test_image  = test_image.reshape((-1,) + test_image.shape)
+    test_image = test_image.reshape((-1,) + test_image.shape)
 
     print(test_image.dtype)
     print(test_image.shape)
