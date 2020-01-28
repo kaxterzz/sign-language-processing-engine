@@ -10,6 +10,20 @@ app = Flask(__name__)
 def hello():
     return "Hello World from Flask"
 
+@app.route("/test" , methods=['POST'])
+def hello():
+    try:
+        if request.method == 'POST':
+            val = request.form['test']
+            print(val)
+            return val
+        else:
+            return "err"
+    except Exception as e:
+        print(e)
+        return e
+
+
 # @app.route('/upload-image', methods=['POST'])
 # def upload_files():
 #     try:
