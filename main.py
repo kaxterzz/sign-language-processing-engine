@@ -47,7 +47,7 @@ def upload_files():
             # status = static_file.save(path + img_name)
             # full_file = path + static_file_name
             res = predict(random_file_name)
-            return res
+            return jsonify(res)
         else:
             return "false"
 
