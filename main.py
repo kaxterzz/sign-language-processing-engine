@@ -56,8 +56,7 @@ def upload_files():
             f = request.files['file']  
             random_file_name = 'images/'+randomString()+'.png'
             f.save(random_file_name)
-            res = predict(random_file_name)  
-            return jsonify(res)
+            return(predict(random_file_name))
         else:
             return "false"
 
