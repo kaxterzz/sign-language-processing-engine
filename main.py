@@ -4,13 +4,8 @@ import string
 import random
 import os
 from base64 import b64decode
-from werkzeug.utils import secure_filename
-
-UPLOAD_FOLDER = '/images'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def hello():
@@ -33,25 +28,15 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/upload-image', methods=['POST'])
 def upload_files():
     try:
         if request.method == 'POST':
-                # check if the post request has the file part
-            if 'file' not in request.files:
-                flash('No file part')
-            file = request.files['photo']
-            # if user does not select file, browser also
-            # submit an empty part without filename
-            if file.filename == '':
-                flash('No selected file')
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            f = request.files['file']  
+            random_file_name = 'images/'+randomString()+'.png'
+            f.save(random_file_name)  
+            return "true"
         else:
             return "false"
 
@@ -90,4 +75,4 @@ def upload_files():
 
 if __name__ == "__main__":
     # Only for debugging while developing
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True,port="1230")
