@@ -3,7 +3,8 @@ import socketio
 import string
 import random
 from base64 import b64decode
-from predict import predict
+from keras.models import load_model
+from keras.preprocessing import image
 
 app = Flask(__name__)
 
@@ -54,7 +55,7 @@ def predict(image):
         f.write("Class: ",classname)
         f.close()
     return prediction
-    
+
 @app.route('/upload-image', methods=['POST'])
 def upload_files():
     try:
@@ -73,7 +74,7 @@ def upload_files():
             f.close()
             # status = static_file.save(path + img_name)
             # full_file = path + static_file_name
-            predict(random_file_name)
+            predict(str(random_file_name))
             return "true"
             #return jsonify(res)
         else:
