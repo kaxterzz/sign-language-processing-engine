@@ -37,7 +37,7 @@ def predict(file_name):
     f = open('results.txt','w') 
     f.write(classname)
     f.close() 
-    sio.emit('get_res', classname)
+    sio.emit('send_res', classname)
     return classname
 
 predict(file_name)
