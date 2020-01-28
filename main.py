@@ -29,10 +29,10 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
-def predict(image):
+def predict(img):
     model = load_model("testmodel3.h5")
 
-    test_image = image.load_img(image,color_mode="grayscale",target_size=(28,28,1))
+    test_image = image.load_img(img,color_mode="grayscale",target_size=(28,28,1))
     # test_image = x_train[3]
     # plt.imshow(x_train[3].reshape(28,28))
     #print(test_image.format)
