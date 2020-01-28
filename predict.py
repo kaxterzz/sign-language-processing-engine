@@ -20,6 +20,3 @@ prediction = y_pred[0]
 classname = y_pred[0]
 print("Class: ",classname)
 print(y_pred)
-f = open('res.txt', 'w')
-    f.write("Class: ",classname)
-    f.close()
