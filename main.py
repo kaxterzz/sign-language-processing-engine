@@ -29,10 +29,10 @@ def randomString(stringLength=10):
     return ''.join(random.choice(letters) for i in range(stringLength))
 
 @app.route('/upload-image', methods=['POST'])
-def upload_files(request):
+def upload_files():
     try:
         if request.method == 'POST':
-            file_data = request.image
+            file_data = request.form.get('image')
             
             # img_name = secure_filename(static_file.filename)
             # Decode the Base64 string, making sure that it contains only valid characters
