@@ -34,7 +34,7 @@ def upload_files():
             # Decode the Base64 string, making sure that it contains only valid characters
             data = b64decode(file_data)
             #print(static_file_name)
-            random_file_name = 'images/'+randomString()+'.png'
+            random_file_name = 'images/'+'a1'+'.png'
             
             f = open(random_file_name, 'wb')
             f.write(data)
@@ -42,7 +42,8 @@ def upload_files():
             # status = static_file.save(path + img_name)
             # full_file = path + static_file_name
             return "true"
-        return "false"
+        else:
+            return "false"
 
     except Exception as e:
         print(e)
