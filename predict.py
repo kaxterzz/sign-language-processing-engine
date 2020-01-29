@@ -1,4 +1,4 @@
-import socketio
+from socketIO_client import SocketIO
 import argparse
 from keras.models import load_model
 from keras.preprocessing import image
@@ -11,20 +11,8 @@ args = vars(ap.parse_args())
 file_name = args["filename"]
 
 # standard Python
-sio = socketio.Client()
 
-sio = socketio.Client()
-
-@sio.event
-def connect():
-    print('connection established')
-
-@sio.event
-def disconnect():
-    print('disconnected from server')
-
-sio.connect('http://139.59.37.180:3770')
-sio.wait()
+socketIO = SocketIO('139.59.37.180', 3770)
 
 def predict(file_name):
     try:
@@ -47,8 +35,9 @@ def predict(file_name):
         classname = y_pred[0]
         print("Class: ",classname)
         print(y_pred)
-        sio.emit('send res', {'classname': classname})
+        socketIO.emit('send res', classname)
         return classname
+        
     except IOError, e:
         print e
 
