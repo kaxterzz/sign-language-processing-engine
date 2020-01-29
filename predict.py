@@ -26,15 +26,21 @@ def predict(file_name):
         test_image = image.img_to_array(test_image)
         test_image = test_image.reshape((-1,) + test_image.shape)
 
-        print(test_image.dtype)
-        print(test_image.shape)
+        #print(test_image.dtype)
+        #print(test_image.shape)
 
         y_pred = model.predict_classes(test_image)
-        print(y_pred)
+        #print(y_pred)
         prediction = y_pred[0]
         classname = y_pred[0]
         print("Class: ",classname)
         print(y_pred)
+        if(classname == 0):
+            print('Result --> A')
+        elif(classname == 1):
+            print('Result --> B')
+        else:
+            print('Not Found')
         sio.emit('send res',classname)
         return classname
 
