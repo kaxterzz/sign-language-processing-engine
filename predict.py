@@ -35,7 +35,7 @@ def predict(file_name):
         classname = y_pred[0]
         print("Class: ",classname)
         print(y_pred)
-        sio.emit('send_res', classname)
+        sio.emit('send res', classname)
         return classname
     except IOError, e:
         print e
