@@ -39,8 +39,8 @@ def upload_files():
             #process = subprocess.Popen(['python', 'predict.py', '--filename', random_file_name])
             cmd = "python predict.py --filename "+random_file_name
             os.system(cmd)
-            print('Running in process', process.pid)
-            process.wait(timeout=15)
+            #print('Running in process', process.pid)
+            #process.wait(timeout=15)
             return "true"
         else:
             return "false"
