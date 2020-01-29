@@ -19,10 +19,10 @@
         var socket = io('http://139.59.37.180:3770');
         socket.on('connection', function (socket) {
             console.log('a user connected');
-            socket.on('new message', function (data) {
+            socket.on('send res', function (data) {
                 console.log('sr', data);
             });
-            socket.on('my message', function (data) {
+            socket.on('get res', function (data) {
                 console.log('gr', data);
             });
         });

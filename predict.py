@@ -12,7 +12,19 @@ file_name = args["filename"]
 
 # standard Python
 sio = socketio.Client()
+
+sio = socketio.Client()
+
+@sio.event
+def connect():
+    print('connection established')
+
+@sio.event
+def disconnect():
+    print('disconnected from server')
+
 sio.connect('http://139.59.37.180:3770')
+sio.wait()
 
 def predict(file_name):
     try:
