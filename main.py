@@ -36,11 +36,11 @@ def upload_files():
             random_file_name = 'images/'+randomString()+'.png'
             f.save(random_file_name)
             #res = predict(random_file_name)
-            #process = subprocess.Popen(['python', 'predict.py', '--filename', random_file_name])
-            cmd = "python predict.py --filename "+random_file_name
-            os.system(cmd)
-            #print('Running in process', process.pid)
-            #process.wait(timeout=15)
+            process = subprocess.Popen(['python', 'predict.py', '--filename', random_file_name])
+            #cmd = "python predict.py --filename "+random_file_name
+            #os.system(cmd)
+            print('Running in process', process.pid)
+            process.wait(timeout=15)
             return "true"
         else:
             return "false"
