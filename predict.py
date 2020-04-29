@@ -14,6 +14,7 @@ file_name = args["filename"]
 sio = socketio.Client()
 sio.connect('http://139.59.37.180:3770')
 
+
 def predict(file_name):
     try:
         model = load_model("testmodel3.h5")
@@ -47,5 +48,3 @@ def predict(file_name):
     except Exception as e:
         print(e)
         return e
-
-predict(file_name)

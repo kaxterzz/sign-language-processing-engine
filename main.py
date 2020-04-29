@@ -3,6 +3,7 @@ import string
 import random
 import os
 from base64 import b64decode
+from predict import predict
 
 app = Flask(__name__)
 
@@ -34,13 +35,14 @@ def upload_files():
             f = request.files['file']  
             random_file_name = 'images/'+randomString()+'.png'
             f.save(random_file_name)
+            return predict(random_file_name)
             #res = predict(random_file_name)
-            #process = subprocess.Popen(['python', 'predict.py', '--filename', random_file_name])
-            #cmd = "python predict.py --filename "+random_file_name
-            #os.system(cmd)
+            # process = subprocess.Popen(['python', 'predict.py', '--filename', random_file_name])
+            # cmd = "python predict.py --filename "+random_file_name
+            # os.system(cmd)
             #print('Running in process', process.pid)
             #process.wait(timeout=15)
-            return "true"
+            # return "true"
         else:
             return "false"
 
