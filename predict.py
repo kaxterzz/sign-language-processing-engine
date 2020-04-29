@@ -64,57 +64,57 @@ def predict(file_name):
         elif(classname == 8):
             print('Result --> I')
             result = 'I'
+        # elif(classname == 9):
+        #     print('Result --> J')
+        #     result = 'J'
         elif(classname == 9):
-            print('Result --> J')
-            result = 'J'
-        elif(classname == 10):
             print('Result --> K')
             result = 'K'
-        elif(classname == 11):
+        elif(classname == 10):
             print('Result --> L')
             result = 'L'
-        elif(classname == 12):
+        elif(classname == 11):
             print('Result --> M')
             result = 'M'
-        elif(classname == 13):
+        elif(classname == 12):
             print('Result --> N')
             result = 'N'
-        elif(classname == 14):
+        elif(classname == 13):
             print('Result --> O')
             result = 'O'
-        elif(classname == 15):
+        elif(classname == 14):
             print('Result --> P')
             result = 'P'
-        elif(classname == 16):
+        elif(classname == 15):
             print('Result --> Q')
             result = 'Q'
-        elif(classname == 17):
+        elif(classname == 16):
             print('Result --> R')
             result = 'R'
-        elif(classname == 18):
+        elif(classname == 17):
             print('Result --> S')
             result = 'S'
-        elif(classname == 19):
+        elif(classname == 18):
             print('Result --> T')
             result = 'T'
-        elif(classname == 20):
+        elif(classname == 19):
             print('Result --> U')
             result = 'U'
-        elif(classname == 21):
+        elif(classname == 20):
             print('Result --> V')
             result = 'V'
-        elif(classname == 22):
+        elif(classname == 21):
             print('Result --> W')
             result = 'W'
-        elif(classname == 23):
+        elif(classname == 22):
             print('Result --> X')
             result = 'X'
-        elif(classname == 24):
+        elif(classname == 23):
             print('Result --> Y')
             result = 'Y'
-        elif(classname == 25):
-            print('Result --> Z')
-            result = 'Z'
+        # elif(classname == 25):
+        #     print('Result --> Z')
+        #     result = 'Z'
         else:
             print('Not Found')
             result = 'Not Found'
