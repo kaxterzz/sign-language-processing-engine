@@ -43,7 +43,7 @@ def predict(file_name):
         else:
             print('Not Found')
         # sio.emit('send res',classname)
-        return classname
+        return str(classname)
 
     except Exception as e:
         print(e)
