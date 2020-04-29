@@ -3,12 +3,12 @@ import argparse
 from keras.models import load_model
 from keras.preprocessing import image
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-f", "--filename", required=True,
-                help="file name")
-args = vars(ap.parse_args())
+# ap = argparse.ArgumentParser()
+# ap.add_argument("-f", "--filename", required=True,
+#                 help="file name")
+# args = vars(ap.parse_args())
 
-file_name = args["filename"]
+# file_name = args["filename"]
 
 # standard Python
 sio = socketio.Client()
