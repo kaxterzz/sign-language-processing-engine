@@ -1,4 +1,4 @@
-import socketio
+# import socketio
 import argparse
 from keras.models import load_model
 from keras.preprocessing import image
@@ -11,8 +11,8 @@ from keras.preprocessing import image
 # file_name = args["filename"]
 
 # standard Python
-sio = socketio.Client()
-sio.connect('http://139.59.37.180:3770')
+# sio = socketio.Client()
+# sio.connect('http://139.59.37.180:3770')
 
 
 def predict(file_name):
